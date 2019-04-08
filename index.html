@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+
+    <title>Math Monsters</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <hr>
+        <div class="container text-center">
+          <h1>Math Monsters</h1>
+        <h3>Basic math skills with numbers between 1 - 100</h3>
+        </div>
+        
+        <hr>
+      </header>
+
+      
+
+      <section>
+        
+        
+        
+        
+        <div class="row">
+          <div class="col-sm-3 bg-light p-4">
+            <form name="player" onSubmit="submitName()">
+                <label class="name">Your Name:</label>
+                <input id="Name" name="Name" type="text" /><br>                  
+        </form>
+            <h2>Scoreboard:</h2>
+            <div id="score">0</div>
+            <section id="monster-message"></section>
+          </div>
+          <div class="col-sm-9">
+            <div class="row">
+          <div class="col-md-3">
+            <button class="button" onclick="startAddition()">Addition</button>
+        </div>
+        <div class="col-md-3">
+            <button class="button" onclick="startSubtraction()">Subtraction</button>
+        </div>
+        <div class="col-md-3">
+            <button class="button" onclick="startMultiplication()">Multiplication</button>
+        </div>
+        <div class="col-md-3">
+            <button class="button" onclick="startDivision()">Division</button>
+        </div>
+      </div>
+      <div>
+        <div class="container m-5">
+          <p id="question">Are you ready? Click the button to choose the type of questions.</p>
+          <form id="answer" name="answer" onsubmit="checkAnswer();
+     return false;" action="#" data-gametype="addition">
+
+        Answer: <input type="number" name="answer">
+        
+        <input class="submit" type="submit" value="submit">
+        <button class="button" onclick="nextQuestion()">Pass</button>
+
+    </form>
+        </div>
+        
+
+    
+      </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script type="text/javascript" src="javascript.js"></script>
+  </body>
+</html>
