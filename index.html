@@ -15,7 +15,7 @@
     <div class="container">
       <header>
         <hr>
-        <div class="container text-center">
+        <div class="container text-center py-3">
           <h1>Math Monsters</h1>
         <h3>Basic math skills with numbers between 1 - 100</h3>
         </div>
@@ -23,36 +23,31 @@
         <hr>
       </header>
 
-      
-
       <section>
-        
-        
-        
-        
+         
         <div class="row">
-          <div class="col-sm-3 bg-light p-4">
+          <div class="col-md-3 bg-light p-4">
             <form name="player" onSubmit="submitName()">
                 <label class="name">Your Name:</label>
                 <input id="Name" name="Name" type="text" /><br>                  
         </form>
             <h2>Scoreboard:</h2>
             <div id="score">0</div>
-            <section id="monster-message"></section>
+            <section id="monsterLevel"></section>
           </div>
-          <div class="col-sm-9">
+          <div class="col-md-9">
             <div class="row">
           <div class="col-md-3">
-            <button class="button" onclick="startAddition()">Addition</button>
+            <button class="button btn btn-primary btn-lg" onclick="startAddition()">Addition</button>
         </div>
         <div class="col-md-3">
-            <button class="button" onclick="startSubtraction()">Subtraction</button>
+            <button class="button btn btn-primary btn-lg" onclick="startSubtraction()">Subtraction</button>
         </div>
         <div class="col-md-3">
-            <button class="button" onclick="startMultiplication()">Multiplication</button>
+            <button class="button btn btn-primary btn-lg" onclick="startMultiplication()">Multiplication</button>
         </div>
         <div class="col-md-3">
-            <button class="button" onclick="startDivision()">Division</button>
+            <button class="button btn btn-primary btn-lg" onclick="startDivision()">Division</button>
         </div>
       </div>
       <div>
@@ -69,8 +64,6 @@
     </form>
         </div>
         
-
-    
       </div>
 
           </div>
