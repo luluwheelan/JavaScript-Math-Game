@@ -53,11 +53,9 @@
       <div>
         <div class="container m-5">
           <p id="question">Are you ready? Click the button to choose the type of questions.</p>
-          <form id="answer" name="answer" onsubmit="checkAnswer();
-     return false;" action="#" data-gametype="addition">
-
+          <p id="hint"></p>
         Answer: <input type="number" name="answer">
-        
+        <input type="hidden" name="rightAnswer" id="rightAnswer">
         <input class="submit" type="submit" value="submit">
         <button class="button" onclick="nextQuestion()">Pass</button>
 

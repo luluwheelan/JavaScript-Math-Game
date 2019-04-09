@@ -27,12 +27,16 @@ function startMultiplication() {
     multiplication();
 }
 
+function startDivision() {
+    division();
+}
+
 
 function addition() {
     let num1 = Math.floor(Math.random() *100);
     let num2 = Math.floor(Math.random() *(100-num1));
     
- question.textContent =  num1 + " + " + num2 + " ?";
+ question.textContent =  num1 + " + " + num2 + " =";
  rightAnswer.value = (num1 + num2);
 }
 
@@ -40,14 +44,25 @@ function subtraction() {
     let num1 = Math.floor(Math.random() *100);
     let num2 = Math.floor(Math.random() *num1);
     
- question.textContent =  num1 + " - " + num2 + " ?";
+ question.textContent =  num1 + " - " + num2 + " =";
  rightAnswer.value = (num1 + num2);
 }
+
 
 function multiplication() {
     let num1 = Math.floor(Math.random() *10+1);
     let num2 = Math.floor(Math.random() *10+1);
     
- question.textContent =  num1 + " * " + num2 + " ?";
+ question.textContent =  num1 + " * " + num2 + " =";
  rightAnswer.value = (num1 + num2);
+}
+
+function division() {
+
+    let num1 = Math.floor(Math.random() *10+1);
+    let num2 = Math.floor(Math.random() *10+1);
+    let answer = num1 * num2;
+    
+ question.textContent =  answer + " / " + num1 + " =";
+ rightAnswer.value = num2;
 }
