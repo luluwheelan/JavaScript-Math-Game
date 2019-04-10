@@ -23,8 +23,7 @@
         <hr>
       </header>
 
-      <section>
-         
+      <section> 
         <div class="row">
           <div class="col-md-3 bg-light p-4">
             <form name="player" onSubmit="submitName()">
@@ -33,41 +32,19 @@
         </form>
             <h2>Scoreboard:</h2>
             <div id="score">0</div>
-            <section id="monsterLevel"></section>
+            <p id="monsterLevel"></p>
           </div>
           <div class="col-md-9">
-            <div class="row">
-          <div class="col-md-3">
-            <button class="button btn btn-primary btn-lg" onclick="startAddition()">Addition</button>
-        </div>
-        <div class="col-md-3">
-            <button class="button btn btn-primary btn-lg" onclick="startSubtraction()">Subtraction</button>
-        </div>
-        <div class="col-md-3">
-            <button class="button btn btn-primary btn-lg" onclick="startMultiplication()">Multiplication</button>
-        </div>
-        <div class="col-md-3">
-            <button class="button btn btn-primary btn-lg" onclick="startDivision()">Division</button>
-        </div>
-      </div>
-      <div>
-        <div class="container m-5">
-          <p id="question">Are you ready? Click the button to choose the type of questions.</p>
-          <p id="hint"></p>
-        Answer: <input type="number" name="answer">
-        <input type="hidden" name="rightAnswer" id="rightAnswer">
-        <input class="submit" type="submit" value="submit">
-        <button class="button" onclick="nextQuestion()">Pass</button>
-
-    </form>
-        </div>
-        
+            <h3 id="question">Are you ready? Click <button id="start" class="btn btn-primary">HERE</button> to start.</h3>
+          <p id="feedback"></p>
+          <input id="inputAnswer" placeholder="Your answer">
+          <input type="hidden" name="rightAnswer" id="rightAnswer">
+            <button id="submit" class="btn btn-primary">Submit</button>
+        <button id="skipQuestion" class="btn btn-dark" >Skip</button>
       </div>
 
-          </div>
         </div>
-      </section>
-    </div>
+        </section>
 
     <script type="text/javascript" src="javascript.js"></script>
   </body>
