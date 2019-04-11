@@ -108,24 +108,21 @@ MathGame.prototype.evaluateAns = function(){
 
 MathGame.prototype.processGame = function(game){
 	if (game.evaluateAns()) {//if answer is right
-
-		playing = true;
 		score += difficulty;
 		
 		feedback.textContent = "You did great!";
-		
 		newGame.generateQuestion();
 
-	}else{
-
+	}
+	else{
 		score -= difficulty;
 
 
 		feedback.textContent = "Answer is wrong. keep going for it!"
 	}
-
 	inputAnswer.value = "";
 	scoreEle.textContent = score;
+
 
 };
 
