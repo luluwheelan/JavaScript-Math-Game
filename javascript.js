@@ -32,22 +32,18 @@ let playing = false;
 var user ;
 //let monsterMode = false;
 let difficulty = 1;
-//let difficulty = getRadioVal( document.getElementById('diffiLevel'), 'diffi' );
 
+//click to start a game
+start.onclick = function() {
 
-// function getRadioVal() {
-//     var val;
-//     // get list of radio buttons with specified name
-//     var radios = document.getElementById('diffiLevel').ELEMENT_NODE;
-    
-//     for (var i=0, len=radios.length; i<len; i++) {
-//         if ( radios[i].checked ) { 
-//             val = radios[i].value; 
-//             break; 
-//         }
-//     }
-//     return val; 
-// }
+	user = prompt("What is your name?");
+	if(user === null || user === ""){
+		user = "Anonymous Monster";
+	}
+	newGame = new MathGame();
+	newGame.getUser(newGame);
+};
+
 
 
 var MathGame = function() {
@@ -82,7 +78,7 @@ MathGame.prototype.Subtraction = function(){
     let num2 = Math.floor(Math.random() *num1*difficulty);
     
  question.textContent =  num1 + " - " + num2 + " =";
- rightAnswer.value = (num1 + num2);
+ rightAnswer.value = (num1 - num2);
 };
 
 MathGame.prototype.Multiplication = function(){
@@ -90,7 +86,7 @@ MathGame.prototype.Multiplication = function(){
     let num2 = Math.floor(Math.random() *10*difficulty+1);
     
  question.textContent =  num1 + " * " + num2 + " =";
- rightAnswer.value = (num1 + num2);
+ rightAnswer.value = (num1 * num2);
 };
 
 MathGame.prototype.Division = function(){
@@ -114,23 +110,21 @@ MathGame.prototype.processGame = function(game){
 	if (game.evaluateAns()) {//if answer is right
 
 		playing = true;
-		score++;
+		score += difficulty;
 		
 		feedback.textContent = "You did great!";
 		inputAnswer.value = "";
-	scoreEle.textContent = score;
-	newGame.generateQuestion();
+		scoreEle.textContent = score;
+		newGame.generateQuestion();
 
 	}else{
 
-		score--;
+		score -= difficulty;
 
 		feedback.textContent = "Answer is wrong. keep going for it!"
-		//if(skipQuestion.onclick() -> this.Addition)
+		inputAnswer.value = "";
 	}
-	// inputAnswer.value = "";
-	// scoreEle.textContent = score;
-	// newGame.generateQuestion();
+
 };
 
 MathGame.prototype.getUser = function(game) {
@@ -174,7 +168,7 @@ skipQuestion.onclick = function(){
 //If a user did not type in name at the prompt, the user name will be null
 //This part need improvement if we can time later on
 save.onclick = function (){
-	if(playing  == false || user == "anonymous"){
+	if(playing  == false || user == "Anonymous Monster"){
 		return;
 	}
   const savedUser = {
@@ -194,7 +188,6 @@ monster.onclick = function(){
 		return;
 	}
 	if(isNaN(Number(diffi.value))){
-		console.log(Number(diffi.value));
 		feedback.textContent = "Warning: Please enter vaild number!";
 		return;
 	}
@@ -203,13 +196,4 @@ monster.onclick = function(){
 	
 }
 
-//click to start a game
-start.onclick = function() {
 
-	user = prompt("What is your name?");
-	if(user === null || user == ""){
-		user = "Monster";
-	}
-	newGame = new MathGame();
-	newGame.getUser(newGame);
-};
