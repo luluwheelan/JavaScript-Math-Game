@@ -113,17 +113,19 @@ MathGame.prototype.processGame = function(game){
 		score += difficulty;
 		
 		feedback.textContent = "You did great!";
-		inputAnswer.value = "";
-		scoreEle.textContent = score;
+		
 		newGame.generateQuestion();
 
 	}else{
 
 		score -= difficulty;
 
+
 		feedback.textContent = "Answer is wrong. keep going for it!"
-		inputAnswer.value = "";
 	}
+
+	inputAnswer.value = "";
+	scoreEle.textContent = score;
 
 };
 

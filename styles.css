@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
+@import url('https://fonts.googleapis.com/css?family=Underdog');
 
 body{
 
 	/*background-image: url("");*/
 	color: #13181c;
 	background-color: #dee4e9;
-	font-family: 'Exo 2', sans-serif;
+	font-family: 'Underdog', cursive;
 }
 
 .container{
@@ -14,7 +15,7 @@ body{
 
 header{
 	/*background-color: #7990a4;*/
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 }
 
 hr {
@@ -24,13 +25,38 @@ hr {
 h1{
 	font-weight: 900;
 	text-align: center;
-	font-size: 3rem;
+	font-size: 4rem;
+	color: #aa3111;
 }
 
 h2{
 	font-weight: 600;
 	font-size: 1.8rem;
 
+}
+h3{
+	color: white;
+	font-size: 30px!import;
+	font-weight: 1200;
+}
+#userName, #score{
+	color: #aa3111;
+	font-size: 2rem;
+}
+
+
+#blackBoard{
+	background-image: url("black-board.jpg");
+	height: 300px;
+	position: relative;
+  	text-align: center;
+}
+
+#overlay{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 p{
@@ -43,10 +69,10 @@ p{
 	color: white;
 }
 
-#score{
+/*#score{
 	font-size: 3rem;
 	color:red;
-}
+}*/
 #guessLimit{
 	text-decoration: underline;
 }

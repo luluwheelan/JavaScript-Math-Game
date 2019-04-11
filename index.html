@@ -17,28 +17,26 @@
         <hr>
         <div class="container text-center py-3">
           <h1>Math Monsters</h1>
-        <h3>Basic math skills with numbers between 1 - 100</h3>
         </div>
         
         <hr>
       </header>
 
       <section> 
-        <div class="row">
-          <div class="col-md-3 bg-light p-4">
-            <h3>Hi <span id="userName"></span></h3>
-            <h2>Scoreboard:</h2>
-            <div id="score">0</div>
-            <p id="monsterLevel"></p>
-          </div>
-          <div class="col-md-9">
+        <div class="container">
+          <h2>Hi <span id="userName"></span> Your Corrent Score: <span id="score">0</span> </h2>
+        </div>
+
+        <div class="container" id="blackBoard">
+          <div id="overlay">
             <h3 id="question">Are you ready? Click <button id="start" class="btn btn-primary">HERE</button> to start.</h3>
+          </div>
+        </div>
+
+        <div class="container">
+
+            <!-- <h3 id="question">Are you ready? Click <button id="start" class="btn btn-primary">HERE</button> to start.</h3> -->
           
-          <!-- <div id="diffiLevel">
-  <input value="1" type="radio" name="diffi" checked="checked"/>Beginner
-  <input value="2" type="radio" name="diffi"/>Medium
-  <input value="3" type="radio" name="diffi" />Advanced
-</div> -->
 
                     <p id="feedback"></p>
           <input id="inputAnswer" placeholder="Your answer">         
