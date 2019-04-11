@@ -24,21 +24,37 @@ const save = document.querySelector('#save');
 //mostermode button
 const monster = document.querySelector('#monster');
 //get difficulty
-const diffi = document.querySelector('#diffi');
+const diffis = document.getElementsByName('diffi');
 
 // Set variables
 var score = 0;
 let playing = false;
 var user ;
-let monsterMode = false;
+//let monsterMode = false;
 let difficulty = 1;
+//let difficulty = getRadioVal( document.getElementById('diffiLevel'), 'diffi' );
+
+
+// function getRadioVal() {
+//     var val;
+//     // get list of radio buttons with specified name
+//     var radios = document.getElementById('diffiLevel').ELEMENT_NODE;
+    
+//     for (var i=0, len=radios.length; i<len; i++) {
+//         if ( radios[i].checked ) { 
+//             val = radios[i].value; 
+//             break; 
+//         }
+//     }
+//     return val; 
+// }
 
 //click to start a game
 start.onclick = function(){
 
 	user = prompt("What is your name?");
 	if(user === null || user == ""){
-		user = "anonymous";
+		user = "Monster";
 	}
 	newGame = new MathGame();
 	
@@ -77,17 +93,16 @@ var MathGame = function(options = {}) {
 };
 
 MathGame.prototype.generateQuestion = function(){
-	console.log("here");
 	var allFuns;
-	monsterMode ? allFuns = [newGame.MonAddition(),newGame.MonSubtraction(),newGame.MonMultiplication(), newGame.MonDivision()] : 
-	allFuns = [newGame.Addition(),newGame.Subtraction(),newGame.Multiplication(), newGame.Division()];
+	//monsterMode ? allFuns = [this.MonAddition(),this.MonSubtraction(),this.MonMultiplication(), this.MonDivision()] : 
+	
+	allFuns = [this.Addition,this.Subtraction,this.Multiplication, this.Division];
 		
 	var i = Math.floor(Math.random()*allFuns.length);
-    console.log(allFuns[i]);
-	console.log(i);
-	allFuns[i];
+	allFuns[i]();
 
 };
+
 MathGame.prototype.Addition = function(){
 	let num1 = Math.floor(Math.random() *100*difficulty);
     let num2 = Math.floor(Math.random() *(100*difficulty-num1));
@@ -131,18 +146,20 @@ MathGame.prototype.processGame = function(){
 		score++;
 		
 		feedback.textContent = "You did great!";
-		
+		inputAnswer.value = "";
+	scoreEle.textContent = score;
+	newGame.generateQuestion();
 
 	}else{
 
 		score--;
-		//feedback.textContent = "Try again or skip the question."
+
 		feedback.textContent = "Answer is wrong. keep going for it!"
 		//if(skipQuestion.onclick() -> this.Addition)
 	}
-	inputAnswer.value = "";
-	scoreEle.textContent = score;
-	newGame.generateQuestion();
+	// inputAnswer.value = "";
+	// scoreEle.textContent = score;
+	// newGame.generateQuestion();
 	
 
 };
