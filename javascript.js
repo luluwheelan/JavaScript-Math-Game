@@ -33,6 +33,8 @@ start.onclick = function(){
 		userEle.textContent = savedUser.name;
 		scoreEle.textContent = savedUser.leftScore;
 		question.textContent = savedUser.leftQuestion;
+		rightAnswer.value = savedUser.leftAnswer;
+
 	}else{
 		userEle.textContent = user;
 
@@ -40,11 +42,7 @@ start.onclick = function(){
 	}
 
 	playing = true;
-	// while(playing){
-		
-		
-
-	//}
+	//newGame.processGame();
 
     submit.onclick = newGame.processGame;
    // feedback.textContent = Number(rightAnswer.value);
@@ -137,6 +135,7 @@ save.onclick = function (){
   name: user,
   leftScore: score,
   leftQuestion:question.textContent,
+  leftAnswer: rightAnswer.value,
   }
 
 localStorage.setItem(user,JSON.stringify(savedUser));
