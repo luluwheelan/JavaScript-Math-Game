@@ -26,10 +26,7 @@
       <section> 
         <div class="row">
           <div class="col-md-3 bg-light p-4">
-            <form name="player" onSubmit="submitName()">
-                <label class="name">Your Name:</label>
-                <input id="Name" name="Name" type="text" /><br>                  
-        </form>
+            <h3>Hi <span id="userName"></span></h3>
             <h2>Scoreboard:</h2>
             <div id="score">0</div>
             <p id="monsterLevel"></p>
@@ -41,6 +38,7 @@
           <input type="hidden" name="rightAnswer" id="rightAnswer">
             <button id="submit" class="btn btn-primary">Submit</button>
         <button id="skipQuestion" class="btn btn-dark" >Skip</button>
+        <button id="save" class="btn btn-dark" >Save and quit</button>
       </div>
 
         </div>
