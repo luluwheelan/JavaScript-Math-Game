@@ -1,23 +1,32 @@
 // Select elements
+//display current score
 const scoreEle = document.querySelector('#score');
+//display user name
 const userEle = document.querySelector('#userName');
+//This one not in use yet, if have time later, can improve this part
 const monsterLevel = document.querySelector('#monsterLevel');
+//start game button
 const start = document.querySelector('#start');
+//display question
 const question = document.querySelector('#question');
+//display feedback
 const feedback = document.querySelector('#feedback');
+//user input answer
 const inputAnswer = document.querySelector('#inputAnswer');
+//hidden right answer
 const rightAnswer = document.querySelector('#rightAnswer');
+//skip current queation button
 const skipQuestion = document.querySelector('#skipQuestion');
+//submit answer
 const submit = document.querySelector('#submit');
+//save and quit button
 const save = document.querySelector('#save');
 
 // Set variables
 var score = 0;
-var playing = false;
-var user;
+var playing;
+var user ;
 
-	
-	//window.localStorage.getItem('user');
 
 
 //click to start a game
@@ -36,12 +45,12 @@ start.onclick = function(){
 		rightAnswer.value = savedUser.leftAnswer;
 
 	}else{
+		//if user not in the local storage, create a new user
 		userEle.textContent = user;
-
 		newGame.Addition();
 	}
 
-	playing = true;
+	playing = true; 
 	//newGame.processGame();
 
     submit.onclick = newGame.processGame;
@@ -60,7 +69,7 @@ var MathGame = function(options = {}) {
 };
 
 MathGame.prototype.generateQuestion = function(){
-	var allFuns = ['Addition','Subtraction','tMultiplication', 'Division'];
+	var allFuns = [this.Addition,this.Subtraction,this.tMultiplication, this.Division];
 	var i = Math.floor(Math.random()*allFuns.length);
 
 	allFuns[i]();
@@ -128,8 +137,13 @@ evaluateAns = function(){
 	
 };
 
+//click for skip current question
+skipQuestion.onclick = function(){ 
 
+}
 //click save and quit will save all the infomation to user local storage
+//If a user did not type in name at the prompt, the user name will be null
+//This part need improvement if we can time later on
 save.onclick = function (){
   const savedUser = {
   name: user,
