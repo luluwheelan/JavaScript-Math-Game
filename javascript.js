@@ -49,45 +49,10 @@ let difficulty = 1;
 //     return val; 
 // }
 
-//click to start a game
-start.onclick = function(){
 
-	user = prompt("What is your name?");
-	if(user === null || user == ""){
-		user = "Monster";
-	}
-	newGame = new MathGame();
-	
-	var savedItem = window.localStorage.getItem(user);
-//If user has saved in the local storage, get all the infomation and diaplay
-	if(savedItem != null){
-		savedUser = JSON.parse(savedItem);
-		userEle.textContent = savedUser.name;
-		scoreEle.textContent = savedUser.leftScore;
-		score = Number(savedUser.leftScore)
-		question.textContent = savedUser.leftQuestion;
-		rightAnswer.value = savedUser.leftAnswer;
-
-	}else{
-		//if user not in the local storage, create a new user
-		userEle.textContent = user;
-		newGame.generateQuestion();
-	}
-
-	playing = true; 
-	//newGame.processGame();
-
-    submit.onclick = newGame.processGame;
-   // feedback.textContent = Number(rightAnswer.value);
-
-   
-};
-
-
-var MathGame = function(options = {}) {
+var MathGame = function() {
 	 this.score = 0;
 	 playing = true;
-
 
 
 };
@@ -138,9 +103,15 @@ MathGame.prototype.Division = function(){
 };
 
 
-MathGame.prototype.processGame = function(){
+//This emthod is checking if the answer is right
+MathGame.prototype.evaluateAns = function(){ 
+	answer = Number(rightAnswer.value);
+	return answer === Number(inputAnswer.value);
+	
+};
 
-	if (evaluateAns()) {//if answer is right
+MathGame.prototype.processGame = function(game){
+	if (game.evaluateAns()) {//if answer is right
 
 		playing = true;
 		score++;
@@ -160,16 +131,37 @@ MathGame.prototype.processGame = function(){
 	// inputAnswer.value = "";
 	// scoreEle.textContent = score;
 	// newGame.generateQuestion();
-	
-
 };
 
-//This emthod is checking if the answer is right
-evaluateAns = function(){ 
-	answer = Number(rightAnswer.value);
-	return answer === Number(inputAnswer.value);
-	
-};
+MathGame.prototype.getUser = function(game) {
+	var savedItem = window.localStorage.getItem(user);
+//If user has saved in the local storage, get all the infomation and diaplay
+	if(savedItem != null){
+		savedUser = JSON.parse(savedItem);
+		userEle.textContent = savedUser.name;
+		scoreEle.textContent = savedUser.leftScore;
+		score = Number(savedUser.leftScore);
+		question.textContent = savedUser.leftQuestion;
+		rightAnswer.value = savedUser.leftAnswer;
+
+	}else{
+		//if user not in the local storage, create a new user
+		userEle.textContent = user;
+		this.generateQuestion();
+	}
+
+	playing = true; 
+	//newGame.processGame();
+
+    submit.onclick = function() {
+    	game.processGame(game);
+    }
+   // feedback.textContent = Number(rightAnswer.value);
+}
+
+
+
+
 
 //click for skip current question
 skipQuestion.onclick = function(){ 
@@ -210,3 +202,14 @@ monster.onclick = function(){
 	newGame.generateQuestion();
 	
 }
+
+//click to start a game
+start.onclick = function() {
+
+	user = prompt("What is your name?");
+	if(user === null || user == ""){
+		user = "Monster";
+	}
+	newGame = new MathGame();
+	newGame.getUser(newGame);
+};
