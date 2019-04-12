@@ -153,9 +153,6 @@ MathGame.prototype.getUser = function(game) {
 }
 
 
-
-
-
 //click for skip current question
 skipQuestion.onclick = function(){ 
 	if(playing == true){
