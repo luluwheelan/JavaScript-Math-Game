@@ -24,7 +24,7 @@ const save = document.querySelector('#save');
 //mostermode button
 const monster = document.querySelector('#monster');
 //get difficulty
-const diffis = document.getElementsByName('diffi');
+const diffis = document.querySelector('#diffi');
 
 // Set variables
 var score = 0;
@@ -203,5 +203,25 @@ inputAnswer.addEventListener("keyup", function(event) {
     event.preventDefault();
     // Trigger the button element with a click
     submit.click();
+  }
+});
+
+inputAnswer.addEventListener("keyup", function(event) {
+  // Number 13 is the "Spacer" key on the keyboard
+  if (event.keyCode === 32) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    skipQuestion.click();
+  }
+});
+
+diffis.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    monster.click();
   }
 });
