@@ -45,18 +45,13 @@ start.onclick = function() {
 };
 
 
-
 var MathGame = function() {
 	 this.score = 0;
 	 playing = true;
-
-
 };
 
 MathGame.prototype.generateQuestion = function(){
-	var allFuns;
-	//monsterMode ? allFuns = [this.MonAddition(),this.MonSubtraction(),this.MonMultiplication(), this.MonDivision()] : 
-	
+	var allFuns;	
 	allFuns = [this.Addition,this.Subtraction,this.Multiplication, this.Division];
 		
 	var i = Math.floor(Math.random()*allFuns.length);
@@ -144,12 +139,11 @@ MathGame.prototype.getUser = function(game) {
 	}
 
 	playing = true; 
-	//newGame.processGame();
 
     submit.onclick = function() {
     	game.processGame(game);
     }
-   // feedback.textContent = Number(rightAnswer.value);
+
 }
 
 
