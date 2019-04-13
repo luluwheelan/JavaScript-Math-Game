@@ -13,9 +13,21 @@ body{
 
 }
 
+#dif-section{
+	position:relative;
+    left: 72%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+   }
+
+
+
 header{
 	/*background-color: #7990a4;*/
 	margin-bottom: 1rem;
+	background-color:#f2f2f2;
+	border-radius:12px;
+	margin-top: 20px;
 }
 
 hr {
@@ -32,6 +44,7 @@ h1{
 h2{
 	font-weight: 600;
 	font-size: 1.8rem;
+	position: relative;
 
 }
 h3{
@@ -47,10 +60,12 @@ h3{
 
 #blackBoard{
 	background-image: url("black-board.jpg");
-	height: 300px;
+	height: 200px;
 	position: relative;
   	text-align: center;
+  	border-radius:12px;
 }
+
 
 #overlay{
   position: absolute;
@@ -79,3 +94,16 @@ p{
 input {
   height: 40px;
 }
+
+
+@media (max-width: 576px){
+
+	#dif-section{
+	position:relative;
+    left: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
+   }
+
+}
+
