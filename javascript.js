@@ -40,14 +40,16 @@ start.onclick = function() {
 	if(user === null || user === ""){
 		user = "Anonymous Monster";
 	}
+
 	newGame = new MathGame();
-	newGame.getUser(newGame);
+	newGame.getUser();
 };
 
 
 var MathGame = function() {
 	 this.score = 0;
 	 playing = true;
+
 };
 
 MathGame.prototype.generateQuestion = function(){
@@ -101,8 +103,10 @@ MathGame.prototype.evaluateAns = function(){
 	
 };
 
-MathGame.prototype.processGame = function(game){
-	if (game.evaluateAns()) {//if answer is right
+Math.prototype.processGame = () => {
+	
+	this.evaluateAns();
+	if (this.evaluateAns()) {//if answer is right
 		score += difficulty;
 		
 		feedback.textContent = "You did great!";
@@ -117,11 +121,30 @@ MathGame.prototype.processGame = function(game){
 	}
 	inputAnswer.value = "";
 	scoreEle.textContent = score;
-
-
 };
 
-MathGame.prototype.getUser = function(game) {
+// MathGame.prototype.processGame = function(){
+// 	this.getUser();
+// 	if (this.evaluateAns()) {//if answer is right
+// 		score += difficulty;
+		
+// 		feedback.textContent = "You did great!";
+// 		newGame.generateQuestion();
+
+// 	}
+// 	else{
+// 		score -= difficulty;
+
+
+// 		feedback.textContent = "Answer is wrong. keep going for it!"
+// 	}
+// 	inputAnswer.value = "";
+// 	scoreEle.textContent = score;
+
+
+// };
+
+MathGame.prototype.getUser = function() {
 	var savedItem = window.localStorage.getItem(user);
 //If user has saved in the local storage, get all the infomation and diaplay
 	if(savedItem != null){
@@ -141,7 +164,7 @@ MathGame.prototype.getUser = function(game) {
 	playing = true; 
 
     submit.onclick = function() {
-    	game.processGame(game);
+    	this.processGame();
     }
 
 }
@@ -151,8 +174,7 @@ MathGame.prototype.getUser = function(game) {
 skipQuestion.onclick = function(){ 
 	if(playing == true){
 		newGame.generateQuestion();
-	}
-	
+	}	
 }
 //click save and quit will save all the infomation to user local storage
 //If a user did not type in name at the prompt, the user name will be null
