@@ -36,7 +36,7 @@ let difficulty = 1;
 //click to start a game
 start.onclick = function() {
 
-	user = prompt("What is your name?");
+	user = prompt("What is your name? We will save your record by name. Or your record will not be saved.");
 	if(user === null || user === ""){
 		user = "Anonymous Monster";
 	}
@@ -46,7 +46,7 @@ start.onclick = function() {
 	newGame.getUser();
 };
 
-
+//MathGmae constructor
 var MathGame = function() {
 	 this.score = 0;
 	 playing = true;
@@ -107,7 +107,7 @@ MathGame.prototype.evaluateAns = function(){
 //This function is generating the game cycle
 MathGame.prototype.processGame = function(){
 
-	skipQuestion.addEventListener('click', this.generateQuestion.bind(this));
+	
 
 	if (this.evaluateAns()) {//if answer is right
 		score += difficulty;
@@ -122,9 +122,11 @@ MathGame.prototype.processGame = function(){
 	}
 	inputAnswer.value = "";
 	scoreEle.textContent = score;
+	
 
 };
 
+//This function gets user from local storage
 MathGame.prototype.getUser = function() {
 	var savedItem = window.localStorage.getItem(user);
 //If user has saved in the local storage, get all the infomation and diaplay
@@ -137,26 +139,31 @@ MathGame.prototype.getUser = function() {
 		rightAnswer.value = savedUser.leftAnswer;
 
 	}else{
-		//if user not in the local storage, create a new user
+		//if user not in the local storage, create a new user and generate a question
 		userEle.textContent = user;
 		this.generateQuestion();
 	}
 
 	playing = true; 
-//Here is the trick part. Big thanks goes to Shaun.
+//Here is the trick part -- BIND. Big thanks goes to Shaun.
+	skipQuestion.addEventListener('click', this.generateQuestion.bind(this));
     submit.addEventListener('click', this.processGame.bind(this));
+    monster.addEventListener('click', this.getDiffi.bind(this));
+    save.addEventListener('click', this.saveAndLeave.bind(this));
 
 }
 
 
 //click save and quit will save all the infomation to user local storage
-//If a user did not type in name at the prompt, the user name will be null
-//This part need improvement if we can time later on
-save.onclick = function (){
+//If a user did not type in a name at the prompt, user info will not be saved
+
+//save.onclick
+MathGame.prototype.saveAndLeave = function (){
 	if(playing  == false || user == "Anonymous Monster"){
+		question.textContent = 'Bye... See you next time!';
 		return;
 	}
-  const savedUser = {
+  const savedUser = { 
   name: user,
   leftScore: score,
   leftQuestion:question.textContent,
@@ -168,7 +175,8 @@ question.textContent = `Bye ${user}. See you next time!`;
 
 };
 
-monster.onclick = function(){
+
+MathGame.prototype.getDiffi = function(){
 	if(playing == false || diffi.value == "" || diffi.value == null){
 		return;
 	}
@@ -177,7 +185,7 @@ monster.onclick = function(){
 		return;
 	}
 	difficulty = Number(diffi.value);
-	newGame.generateQuestion();
+	this.generateQuestion();
 	
 }
 
