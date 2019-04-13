@@ -106,6 +106,9 @@ MathGame.prototype.evaluateAns = function(){
 
 //This function is generating the game cycle
 MathGame.prototype.processGame = function(){
+
+	skipQuestion.addEventListener('click', this.generateQuestion.bind(this));
+
 	if (this.evaluateAns()) {//if answer is right
 		score += difficulty;
 		
@@ -119,6 +122,7 @@ MathGame.prototype.processGame = function(){
 	}
 	inputAnswer.value = "";
 	scoreEle.textContent = score;
+
 };
 
 MathGame.prototype.getUser = function() {
@@ -145,12 +149,6 @@ MathGame.prototype.getUser = function() {
 }
 
 
-//click for skip current question
-skipQuestion.onclick = function(){ 
-	if(playing == true){
-		newGame.generateQuestion();
-	}	
-}
 //click save and quit will save all the infomation to user local storage
 //If a user did not type in name at the prompt, the user name will be null
 //This part need improvement if we can time later on
