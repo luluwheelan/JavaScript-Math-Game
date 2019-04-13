@@ -85,7 +85,7 @@ MathGame.prototype.Multiplication = function(){
 	let num1 = Math.floor(Math.random() *10*difficulty+1);
     let num2 = Math.floor(Math.random() *10*difficulty+1);
     
- question.textContent =  num1 + " * " + num2 + " =";
+ question.textContent =  num1 + " x " + num2 + " =";
  rightAnswer.value = (num1 * num2);
 };
 
@@ -94,7 +94,7 @@ MathGame.prototype.Division = function(){
     let num2 = Math.floor(Math.random() *10*difficulty+1);
     let answer = num1 * num2;
     
- question.textContent =  answer + " / " + num1 + " =";
+ question.textContent =  answer + " ÷ " + num1 + " =";
  rightAnswer.value = num2;
 };
 
