@@ -107,8 +107,6 @@ MathGame.prototype.evaluateAns = function(){
 //This function is generating the game cycle
 MathGame.prototype.processGame = function(){
 
-	
-
 	if (this.evaluateAns()) {//if answer is right
 		score += difficulty;
 		
