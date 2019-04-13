@@ -42,6 +42,7 @@ start.onclick = function() {
 	}
 
 	newGame = new MathGame();
+
 	newGame.getUser();
 };
 
@@ -51,7 +52,7 @@ var MathGame = function() {
 	 playing = true;
 
 };
-
+//This function generate a random equation
 MathGame.prototype.generateQuestion = function(){
 	var allFuns;	
 	allFuns = [this.Addition,this.Subtraction,this.Multiplication, this.Division];
@@ -60,7 +61,7 @@ MathGame.prototype.generateQuestion = function(){
 	allFuns[i]();
 
 };
-
+//This function is generate adding function
 MathGame.prototype.Addition = function(){
 	let num1 = Math.floor(Math.random() *100*difficulty);
     let num2 = Math.floor(Math.random() *(100*difficulty-num1));
@@ -69,7 +70,7 @@ MathGame.prototype.Addition = function(){
  rightAnswer.value = (num1 + num2);
 
 };
-
+//This function is generate subtracting function
 MathGame.prototype.Subtraction = function(){
 	let num1 = Math.floor(Math.random() *100*difficulty);
     let num2 = Math.floor(Math.random() *num1*difficulty);
@@ -77,72 +78,48 @@ MathGame.prototype.Subtraction = function(){
  question.textContent =  num1 + " - " + num2 + " =";
  rightAnswer.value = (num1 - num2);
 };
-
+//This function is generate multiplying function
 MathGame.prototype.Multiplication = function(){
 	let num1 = Math.floor(Math.random() *10*difficulty+1);
     let num2 = Math.floor(Math.random() *10*difficulty+1);
     
- question.textContent =  num1 + " * " + num2 + " =";
+ question.textContent =  num1 + " x " + num2 + " =";
  rightAnswer.value = (num1 * num2);
 };
-
+//This function is generate divising function
 MathGame.prototype.Division = function(){
 	let num1 = Math.floor(Math.random() *10*difficulty+1);
     let num2 = Math.floor(Math.random() *10*difficulty+1);
     let answer = num1 * num2;
     
- question.textContent =  answer + " / " + num1 + " =";
+ question.textContent =  answer + " ÷ " + num1 + " =";
  rightAnswer.value = num2;
 };
 
 
-//This emthod is checking if the answer is right
+//This emthod is checking if the user input answer is correct
 MathGame.prototype.evaluateAns = function(){ 
 	answer = Number(rightAnswer.value);
 	return answer === Number(inputAnswer.value);
 	
 };
 
-Math.prototype.processGame = () => {
-	
-	this.evaluateAns();
+//This function is generating the game cycle
+MathGame.prototype.processGame = function(){
 	if (this.evaluateAns()) {//if answer is right
 		score += difficulty;
 		
 		feedback.textContent = "You did great!";
-		newGame.generateQuestion();
+		this.generateQuestion();
 
 	}
 	else{
 		score -= difficulty;
-
-
 		feedback.textContent = "Answer is wrong. keep going for it!"
 	}
 	inputAnswer.value = "";
 	scoreEle.textContent = score;
 };
-
-// MathGame.prototype.processGame = function(){
-// 	this.getUser();
-// 	if (this.evaluateAns()) {//if answer is right
-// 		score += difficulty;
-		
-// 		feedback.textContent = "You did great!";
-// 		newGame.generateQuestion();
-
-// 	}
-// 	else{
-// 		score -= difficulty;
-
-
-// 		feedback.textContent = "Answer is wrong. keep going for it!"
-// 	}
-// 	inputAnswer.value = "";
-// 	scoreEle.textContent = score;
-
-
-// };
 
 MathGame.prototype.getUser = function() {
 	var savedItem = window.localStorage.getItem(user);
@@ -162,10 +139,8 @@ MathGame.prototype.getUser = function() {
 	}
 
 	playing = true; 
-
-    submit.onclick = function() {
-    	this.processGame();
-    }
+//Here is the trick part. Big thanks goes to Shaun.
+    submit.addEventListener('click', this.processGame.bind(this));
 
 }
 
