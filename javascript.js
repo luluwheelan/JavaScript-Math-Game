@@ -143,7 +143,7 @@ MathGame.prototype.getUser = function() {
 	}
 
 	playing = true; 
-//Here is the trick part -- BIND. Big thanks goes to Shaun.
+//Here is the trick part -- BIND. Big thanks goes for Shaun.
 	skipQuestion.addEventListener('click', this.generateQuestion.bind(this));
     submit.addEventListener('click', this.processGame.bind(this));
     monster.addEventListener('click', this.getDiffi.bind(this));
@@ -155,7 +155,6 @@ MathGame.prototype.getUser = function() {
 //click save and quit will save all the infomation to user local storage
 //If a user did not type in a name at the prompt, user info will not be saved
 
-//save.onclick
 MathGame.prototype.saveAndLeave = function (){
 	if(playing  == false || user == "Anonymous Monster"){
 		question.textContent = 'Bye... See you next time!';
@@ -173,7 +172,7 @@ question.textContent = `Bye ${user}. See you next time!`;
 
 };
 
-
+//This function get the difficulty level from user input
 MathGame.prototype.getDiffi = function(){
 	if(playing == false || diffi.value == "" || diffi.value == null){
 		return;
@@ -187,7 +186,7 @@ MathGame.prototype.getDiffi = function(){
 	
 }
 
-
+//Enter key for submit a answer
 inputAnswer.addEventListener("keyup", function(event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
@@ -198,8 +197,9 @@ inputAnswer.addEventListener("keyup", function(event) {
   }
 });
 
+//Space key for skip a question
 inputAnswer.addEventListener("keyup", function(event) {
-  // Number 13 is the "Spacer" key on the keyboard
+  // Number 32 is the "Spacer" key on the keyboard
   if (event.keyCode === 32) {
     // Cancel the default action, if needed
     event.preventDefault();
@@ -208,6 +208,7 @@ inputAnswer.addEventListener("keyup", function(event) {
   }
 });
 
+//Enter key for submit difficulty level
 diffis.addEventListener("keyup", function(event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
