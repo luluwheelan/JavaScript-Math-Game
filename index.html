@@ -14,17 +14,22 @@
   <body>
     <div class="container">
       <header>
-        <hr>
         <div class="container text-center py-3">
           <h1>Math Monsters</h1>
         </div>
-        
-        <hr>
+
       </header>
 
       <section> 
         <div class="container">
           <h2>Hi <span id="userName"></span> Your Corrent Score: <span id="score">0</span> </h2>
+        </div>
+        
+        <div class="container">
+        <div id="dif-section">
+          <input id="diffi" placeholder="Default 1 as difficulty">
+          <button id="monster" class="btn btn-danger" >Hardcore!</button>
+        </div>
         </div>
 
         <div class="container" id="blackBoard">
@@ -41,13 +46,11 @@
             <button id="submit" class="btn btn-primary">Submit</button>
         <button id="skipQuestion" class="btn btn-dark" >Skip</button>
         <button id="save" class="btn btn-dark" >Save and quit</button>
-		<input id="diffi" placeholder="Default 1 as difficulty">
-	    <button id="monster" class="btn btn-danger" >HARDCORE!</button>
       </div>
 
         </div>
         </section>
-        <div class="container notice  ">
+        <div class="container notice  " >
           <div class="col-sm-6 well-sm bg-secondary p-1 pt-3 mt-3">
           <ul class="text-white">
             <li>Use Enter key to enter a answer or enter a number for difficulty level</li>
